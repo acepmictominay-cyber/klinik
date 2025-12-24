@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Doctor;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 
 class ManageDoctors extends Component
 {
@@ -12,11 +13,14 @@ class ManageDoctors extends Component
 
     public $doctors;
     public $nama, $spesialisasi, $deskripsi, $foto, $gambar, $no_telepon;
+    public $oldFoto = null;
+    public $oldGambar = null;
     public $operating_hours = [];
     public $selected_days = [];
     public $editingId = null;
     public $isEditing = false;
     public $showSuccessModal = false;
+    public $showModal = false;
 
     public function mount()
     {
@@ -46,11 +50,16 @@ class ManageDoctors extends Component
     {
         $this->resetForm();
         $this->isEditing = false;
+        $this->showModal = true;
     }
 
     public function edit($id)
     {
         $doctor = Doctor::find($id);
+        if (!$doctor) {
+            session()->flash('error', 'Dokter tidak ditemukan.');
+            return;
+        }
         $this->editingId = $id;
         $this->nama = $doctor->nama;
         $this->spesialisasi = $doctor->spesialisasi;
@@ -58,10 +67,13 @@ class ManageDoctors extends Component
         $this->no_telepon = $doctor->no_telepon;
         $this->operating_hours = $doctor->operating_hours ?? [];
         $this->selected_days = array_map('intval', array_keys($this->operating_hours));
+        $this->updatedSelectedDays(); // Ensure operating_hours are properly set
+        $this->oldFoto = $doctor->foto;
+        $this->oldGambar = $doctor->gambar;
         $this->foto = null;
         $this->gambar = null;
         $this->isEditing = true;
-        $this->dispatch('scroll-to-form');
+        $this->showModal = true;
     }
 
     public function save()
@@ -80,11 +92,25 @@ class ManageDoctors extends Component
         ];
 
         if ($this->foto) {
+            // Hapus foto lama jika ada
+            if ($this->oldFoto && Storage::disk('public')->exists($this->oldFoto)) {
+                Storage::disk('public')->delete($this->oldFoto);
+            }
             $data['foto'] = $this->foto->store('doctors', 'public');
+        } elseif ($this->isEditing && $this->oldFoto) {
+            // Jika tidak ada foto baru, pertahankan foto lama
+            $data['foto'] = $this->oldFoto;
         }
 
         if ($this->gambar) {
+            // Hapus gambar lama jika ada
+            if ($this->oldGambar && Storage::disk('public')->exists($this->oldGambar)) {
+                Storage::disk('public')->delete($this->oldGambar);
+            }
             $data['gambar'] = $this->gambar->store('doctors', 'public');
+        } elseif ($this->isEditing && $this->oldGambar) {
+            // Jika tidak ada gambar baru, pertahankan gambar lama
+            $data['gambar'] = $this->oldGambar;
         }
 
         if ($this->isEditing) {
@@ -96,6 +122,7 @@ class ManageDoctors extends Component
         $this->resetForm();
         $this->loadDoctors();
         $this->showSuccessModal = true;
+        $this->dispatch('file-upload-reset');
     }
 
     public function delete($id)
@@ -115,14 +142,18 @@ class ManageDoctors extends Component
         $this->selected_days = [];
         $this->foto = null;
         $this->gambar = null;
+        $this->oldFoto = null;
+        $this->oldGambar = null;
         $this->editingId = null;
         $this->isEditing = false;
         $this->showSuccessModal = false;
+        $this->showModal = false;
     }
 
     public function closeModal()
     {
         $this->showSuccessModal = false;
+        $this->showModal = false;
     }
 
     public function render()

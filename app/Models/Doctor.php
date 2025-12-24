@@ -21,4 +21,9 @@ class Doctor extends Model
     protected $casts = [
         'operating_hours' => 'array',
     ];
+
+    public function patients()
+    {
+        return $this->hasMany(Patient::class);
+    }
 }

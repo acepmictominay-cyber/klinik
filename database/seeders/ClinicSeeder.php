@@ -17,11 +17,11 @@ class ClinicSeeder extends Seeder
     public function run(): void
     {
         ClinicProfile::create([
-            'name' => 'Klinik Sehat',
+            'name' => 'Klinik Mumtaz',
             'address' => 'Jl. Kesehatan No. 123, Jakarta',
             'phone' => '021-12345678',
             'email' => 'info@kliniksehat.com',
-            'description' => 'Klinik Sehat adalah pusat kesehatan terdepan yang menyediakan layanan medis berkualitas tinggi dengan pendekatan holistik untuk kesehatan pasien.',
+            'description' => 'Klinik Mumtaz adalah pusat kesehatan terdepan yang menyediakan layanan medis berkualitas tinggi dengan pendekatan holistik untuk kesehatan pasien.',
         ]);
 
         Service::create([
@@ -42,40 +42,82 @@ class ClinicSeeder extends Seeder
             'price' => 75000,
         ]);
 
-        \App\Models\Doctor::create([
-            'nama' => 'Dr. Ahmad Santoso',
-            'spesialisasi' => 'Spesialis Jantung',
-            'jadwal' => 'Senin - Jumat: 08:00 - 16:00',
-            'deskripsi' => 'Dokter spesialis jantung dengan pengalaman 10 tahun.',
-        ]);
+        \App\Models\Doctor::updateOrCreate(
+            ['nama' => 'Dr. Ahmad Santoso'],
+            [
+                'spesialisasi' => 'Spesialis Jantung',
+                'jadwal' => 'Senin - Jumat: 08:00 - 16:00',
+                'operating_hours' => [
+                    1 => ['start' => '08:00', 'end' => '16:00'],
+                    2 => ['start' => '08:00', 'end' => '16:00'],
+                    3 => ['start' => '08:00', 'end' => '16:00'],
+                    4 => ['start' => '08:00', 'end' => '16:00'],
+                    5 => ['start' => '08:00', 'end' => '16:00'],
+                ],
+                'deskripsi' => 'Dokter spesialis jantung dengan pengalaman 10 tahun.',
+            ]
+        );
 
-        \App\Models\Doctor::create([
-            'nama' => 'Dr. Siti Nurhaliza',
-            'spesialisasi' => 'Spesialis Anak',
-            'jadwal' => 'Selasa - Sabtu: 09:00 - 17:00',
-            'deskripsi' => 'Dokter spesialis anak yang ramah dan berpengalaman.',
-        ]);
+        \App\Models\Doctor::updateOrCreate(
+            ['nama' => 'Dr. Siti Nurhaliza'],
+            [
+                'spesialisasi' => 'Spesialis Anak',
+                'jadwal' => 'Selasa - Sabtu: 09:00 - 17:00',
+                'operating_hours' => [
+                    2 => ['start' => '09:00', 'end' => '17:00'],
+                    3 => ['start' => '09:00', 'end' => '17:00'],
+                    4 => ['start' => '09:00', 'end' => '17:00'],
+                    5 => ['start' => '09:00', 'end' => '17:00'],
+                    6 => ['start' => '09:00', 'end' => '17:00'],
+                ],
+                'deskripsi' => 'Dokter spesialis anak yang ramah dan berpengalaman.',
+            ]
+        );
 
-        \App\Models\Doctor::create([
-            'nama' => 'Dr. Budi Prasetyo',
-            'spesialisasi' => 'Spesialis Umum',
-            'jadwal' => 'Senin - Sabtu: 07:00 - 15:00',
-            'deskripsi' => 'Dokter umum yang siap membantu kesehatan keluarga Anda.',
-        ]);
+        \App\Models\Doctor::updateOrCreate(
+            ['nama' => 'Dr. Budi Prasetyo'],
+            [
+                'spesialisasi' => 'Spesialis Umum',
+                'jadwal' => 'Senin - Sabtu: 07:00 - 15:00',
+                'operating_hours' => [
+                    1 => ['start' => '07:00', 'end' => '15:00'],
+                    2 => ['start' => '07:00', 'end' => '15:00'],
+                    3 => ['start' => '07:00', 'end' => '15:00'],
+                    4 => ['start' => '07:00', 'end' => '15:00'],
+                    5 => ['start' => '07:00', 'end' => '15:00'],
+                    6 => ['start' => '07:00', 'end' => '15:00'],
+                ],
+                'deskripsi' => 'Dokter umum yang siap membantu kesehatan keluarga Anda.',
+            ]
+        );
 
-        \App\Models\Doctor::create([
-            'nama' => 'Dr. Maya Sari',
-            'spesialisasi' => 'Spesialis Kulit',
-            'jadwal' => 'Rabu - Jumat: 13:00 - 19:00',
-            'deskripsi' => 'Dokter spesialis kulit dengan keahlian dermatologi.',
-        ]);
+        \App\Models\Doctor::updateOrCreate(
+            ['nama' => 'Dr. Maya Sari'],
+            [
+                'spesialisasi' => 'Spesialis Kulit',
+                'jadwal' => 'Rabu - Jumat: 13:00 - 19:00',
+                'operating_hours' => [
+                    3 => ['start' => '13:00', 'end' => '19:00'],
+                    4 => ['start' => '13:00', 'end' => '19:00'],
+                    5 => ['start' => '13:00', 'end' => '19:00'],
+                ],
+                'deskripsi' => 'Dokter spesialis kulit dengan keahlian dermatologi.',
+            ]
+        );
 
-        \App\Models\Doctor::create([
-            'nama' => 'Dr. Rudi Hartono',
-            'spesialisasi' => 'Spesialis Mata',
-            'jadwal' => 'Selasa - Kamis: 11:00 - 17:00',
-            'deskripsi' => 'Dokter spesialis mata dengan keahlian oftalmologi.',
-        ]);
+        \App\Models\Doctor::updateOrCreate(
+            ['nama' => 'Dr. Rudi Hartono'],
+            [
+                'spesialisasi' => 'Spesialis Mata',
+                'jadwal' => 'Selasa - Kamis: 11:00 - 17:00',
+                'operating_hours' => [
+                    2 => ['start' => '11:00', 'end' => '17:00'],
+                    3 => ['start' => '11:00', 'end' => '17:00'],
+                    4 => ['start' => '11:00', 'end' => '17:00'],
+                ],
+                'deskripsi' => 'Dokter spesialis mata dengan keahlian oftalmologi.',
+            ]
+        );
 
         Medicine::create([
             'name' => 'Paracetamol',
