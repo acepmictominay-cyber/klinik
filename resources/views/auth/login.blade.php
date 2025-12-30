@@ -179,9 +179,9 @@
             <!-- Logo/Header -->
             <div class="text-center mb-8">
                 <div class="inline-flex items-center justify-center mb-4 logo-icon">
-                    <img 
-                        src="{{ asset('storage/assets/logo/logo klinik.png') }}" 
-                        alt="Logo Klinik Mumtaz" 
+                    <img
+                        src="{{ asset('assets/logo/logo klinik.png') }}"
+                        alt="Logo Klinik Mumtaz"
                         class="h-20 w-auto object-contain"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
                     >

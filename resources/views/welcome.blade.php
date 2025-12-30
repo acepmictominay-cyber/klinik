@@ -47,7 +47,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('/storage/assets/klinikMMC.png');
+            background-image: url('/assets/klinikMMC.png');
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
@@ -1766,7 +1766,7 @@
     <header class="header">
         <div class="header-container">
             <a href="/" class="logo">
-                <img src="{{ asset('storage/assets/logo/logo klinik.png') }}" alt="Logo Klinik MMC" class="logo-img">
+                <img src="{{ asset('assets/logo/logo klinik.png') }}" alt="Logo Klinik MMC" class="logo-img">
                 Klinik MMC
             </a>
             <nav>
@@ -1803,7 +1803,7 @@
             <a href="#" onclick="event.preventDefault(); openBookingModal(); return false;" class="hero-cta">Buat Janji Temu</a>
         </div>
         <div class="hero-images">
-            <img src="{{ asset('storage/assets/dokter_hero.png') }}" alt="Dokter Klinik" class="hero-image hero-image-large" onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=600&fit=crop'">
+            <img src="{{ asset('assets/dokter_hero.png') }}" alt="Dokter Klinik" class="hero-image hero-image-large" onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=600&fit=crop'">
                         </div>
     </section>
 
@@ -1875,25 +1875,25 @@
             @php
                 $facilities = [
                     [
-                        'image' => asset('storage/assets/fasilitas/ruangPeriksa.png'),
+                        'image' => asset('assets/fasilitas/ruangPeriksa.png'),
                         'category' => 'Ruang Periksa',
                         'title' => 'Ruang Periksa Modern dan Nyaman',
                         'description' => 'Ruang periksa yang dilengkapi dengan peralatan medis modern untuk memberikan pelayanan terbaik bagi pasien.'
                     ],
                     [
-                        'image' => asset('storage/assets/fasilitas/ruangTunggu.png'),
+                        'image' => asset('assets/fasilitas/ruangTunggu.png'),
                         'category' => 'Ruang Tunggu',
                         'title' => 'Ruang Tunggu Ber-AC yang Nyaman',
                         'description' => 'Ruang tunggu yang luas dengan fasilitas AC untuk kenyamanan pasien saat menunggu antrian.'
                     ],
                     [
-                        'image' => asset('storage/assets/fasilitas/ruangPendaftaran.png'),
+                        'image' => asset('assets/fasilitas/ruangPendaftaran.png'),
                         'category' => 'Pendaftaran',
                         'title' => 'Ruang Pendaftaran yang Terorganisir',
                         'description' => 'Layanan pendaftaran yang cepat dan efisien untuk mempermudah proses administrasi pasien.'
                     ],
                     [
-                        'image' => asset('storage/assets/fasilitas/poliGigi.png'),
+                        'image' => asset('assets/fasilitas/poliGigi.png'),
                         'category' => 'Poli Gigi',
                         'title' => 'Poli Gigi dengan Peralatan Lengkap',
                         'description' => 'Fasilitas perawatan gigi yang modern dengan dokter gigi berpengalaman.'
@@ -1945,12 +1945,12 @@
                 @php
                     $certifications = [
                         [
-                            'img' => asset('storage/assets/sertifikat/sertifikat.png'),
+                            'img' => asset('assets/sertifikat/sertifikat.png'),
                             'title' => 'Sertifikat Akreditasi',
                             'description' => 'Klinik MMC (Mumtaz Medical Center) telah mendapatkan sertifikat akreditasi sebagai bentuk pengakuan atas komitmen kami dalam memberikan pelayanan kesehatan yang berkualitas tinggi dan memenuhi standar nasional.'
                         ],
                         [
-                            'img' => asset('storage/assets/sertifikat/penghargaan.png'),
+                            'img' => asset('assets/sertifikat/penghargaan.png'),
                             'title' => 'Penghargaan Pelayanan Terbaik',
                             'description' => 'Klinik MMC (Mumtaz Medical Center) menerima penghargaan sebagai klinik dengan pelayanan terbaik, yang mencerminkan dedikasi kami dalam memberikan perawatan kesehatan yang terpercaya dan berkualitas untuk pasien.'
                         ]
@@ -1973,7 +1973,7 @@
     <section class="section" id="boutique">
         <div class="section-header">
             <h2 class="section-title">
-                <img src="{{ asset('storage/assets/logo/logo butik.png') }}" alt="Butik Klinik" class="section-title-logo">
+                <img src="{{ asset('assets/logo/logo butik.png') }}" alt="Butik Klinik" class="section-title-logo">
             </h2>
             <a href="{{ route('boutiques') }}" class="section-link">Lihat semua produk</a>
         </div>
@@ -2070,7 +2070,7 @@
             <div class="footer-top">
                 <div>
                     <div class="footer-logo">
-                        <img src="{{ asset('storage/assets/logo/logo klinik.png') }}" alt="Logo Klinik MMC" class="footer-logo-img">
+                        <img src="{{ asset('assets/logo/logo klinik.png') }}" alt="Logo Klinik MMC" class="footer-logo-img">
                         Klinik MMC (Mumtaz Medical Center)
                     </div>
                     <p style="color: #a0a0a0; font-size: 0.875rem; margin-bottom: 1.5rem; line-height: 1.6;">Klinik MMC (Mumtaz Medical Center) menyediakan layanan kesehatan terpercaya dengan dokter spesialis berpengalaman dan fasilitas modern untuk memberikan perawatan terbaik bagi Anda dan keluarga.</p>

@@ -15,7 +15,7 @@
         },
         {
             "src": "/assets/(.*)",
-            "dest": "/public/storage/assets/"
+            "dest": "/public/assets/"
         },
         {
             "src": "/(.*)",
