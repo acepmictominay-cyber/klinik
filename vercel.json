@@ -31,7 +31,7 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "false",
-        "APP_URL": "",
+        "APP_URL": "https://klinik-brown.vercel.app/",
 
         "DB_CONNECTION": "mysql",
         "DB_HOST": "brrqw89wewdaenmhttu9-mysql.services.clever-cloud.com",
