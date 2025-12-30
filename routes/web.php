@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 use App\Models\Patient;
 use App\Models\Doctor;
 use App\Models\Boutique;
@@ -8,6 +9,15 @@ use App\Models\Medicine;
 use App\Models\Service;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\Auth\LoginController;
+
+Route::get('/db-test', function () {
+    try {
+        DB::connection()->getPdo();
+        return 'DB CONNECTED ✅';
+    } catch (\Throwable $e) {
+        return $e->getMessage();
+    }
+});
 
 Route::get('/', function () {
     $doctors = Doctor::all();
